@@ -3,7 +3,8 @@ from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.models import Position
-from app.schemas import PositionCreate, PositionResponse
+from app.schemas import HistoryResponse, PositionCreate, PositionResponse, SellRequest
+from app.services.trade_service import sell_position
 
 router = APIRouter(prefix="/api/positions", tags=["Positions"])
 
@@ -59,3 +60,13 @@ def delete_position(position_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Position not found")
     db.delete(position)
     db.commit()
+
+
+@router.post("/{position_id}/sell", response_model=HistoryResponse)
+def sell(position_id: int, payload: SellRequest, db: Session = Depends(get_db)):
+    """Bán position: tính lời/lỗ, chuyển sang history."""
+    try:
+        history = sell_position(db, position_id, payload.sell_price)
+        return history
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
