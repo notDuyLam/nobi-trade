@@ -1,0 +1,7 @@
+2026-02-28 23:10:47,277 [INFO] app.main: Starting Nobi Trade API...
+2026-02-28 23:10:47,310 [INFO] app.main: Database initialized
+2026-02-28 23:10:47,317 [INFO] apscheduler.scheduler: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-28 23:10:47,317 [INFO] apscheduler.scheduler: Added job "check_prices_and_alert" to job store "default"
+2026-02-28 23:10:47,317 [INFO] apscheduler.scheduler: Scheduler started
+2026-02-28 23:10:47,317 [INFO] app.scheduler: Scheduler started — price check every 5 minutes
+2026-02-28 23:11:49,110 [INFO] app.services.alert_service: Telegram message sent successfully
