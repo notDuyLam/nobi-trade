@@ -68,6 +68,15 @@ def api_delete(path: str):
 st.sidebar.title("📈 Nobi Trade")
 st.sidebar.markdown("Hệ thống cảnh báo & thống kê đầu tư chứng khoán cá nhân")
 
+st.sidebar.divider()
+if st.sidebar.button("🧪 Test gửi Telegram", use_container_width=True):
+    result = api_post("/api/test-notification")
+    if result and result.get("status") == "ok":
+        st.sidebar.success("✅ Đã gửi! Kiểm tra Telegram.")
+    else:
+        msg = result.get("message", "Không kết nối được API") if result else "Không kết nối được API"
+        st.sidebar.error(f"❌ {msg}")
+
 # ── Tabs ──────────────────────────────────────────────────
 
 tab1, tab2 = st.tabs(["📊 Quản lý danh mục", "📈 Báo cáo & Lịch sử"])

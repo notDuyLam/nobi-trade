@@ -59,3 +59,20 @@ app.include_router(history.router)
 @app.get("/")
 def root():
     return {"message": "Nobi Trade API is running"}
+
+
+@app.post("/api/test-notification")
+def test_notification():
+    """Gửi tin nhắn test qua Telegram."""
+    from app.services.alert_service import send_telegram_message
+
+    msg = (
+        "🧪 <b>TEST NOTIFICATION</b>\n"
+        "✅ Kết nối Telegram thành công!\n"
+        "📈 Hệ thống Nobi Trade đang hoạt động."
+    )
+    success = send_telegram_message(msg)
+    if success:
+        return {"status": "ok", "message": "Đã gửi tin nhắn test qua Telegram!"}
+    return {"status": "error", "message": "Gửi thất bại. Kiểm tra TELEGRAM_BOT_TOKEN và TELEGRAM_CHAT_ID trong .env"}
+
