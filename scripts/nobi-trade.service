@@ -1,0 +1,14 @@
+[Unit]
+Description=Nobi Trade API (FastAPI)
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/nobi-trade
+Environment="PATH=/home/ubuntu/nobi-trade/venv/bin"
+ExecStart=/home/ubuntu/nobi-trade/venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

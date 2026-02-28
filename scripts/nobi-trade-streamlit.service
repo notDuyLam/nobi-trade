@@ -1,0 +1,14 @@
+[Unit]
+Description=Nobi Trade Streamlit UI
+After=network.target nobi-trade.service
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/nobi-trade
+Environment="PATH=/home/ubuntu/nobi-trade/venv/bin"
+ExecStart=/home/ubuntu/nobi-trade/venv/bin/streamlit run streamlit_app/app.py --server.port 8501 --server.headless true
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
