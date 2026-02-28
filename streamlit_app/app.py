@@ -141,13 +141,11 @@ with tab1:
 
                     # Sell
                     sell_price = st.number_input(
-                        "Giá bán",
+                        "💲 Nhập giá bán (VNĐ)",
                         min_value=0.0,
                         step=100.0,
                         format="%.0f",
                         key=f"sell_price_{pos['id']}",
-                        label_visibility="collapsed",
-                        placeholder="Nhập giá bán...",
                     )
                     if st.button("💰 Đã bán", key=f"sell_{pos['id']}", use_container_width=True):
                         if sell_price > 0:
