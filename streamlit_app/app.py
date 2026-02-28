@@ -230,25 +230,28 @@ with tab2:
     history = api_get("/api/history", params=params)
 
     if history and len(history) > 0:
-        df = pd.DataFrame(history)
-        df = df.rename(columns={
-            "symbol": "Mã CP",
-            "buy_price": "Giá mua",
-            "sell_price": "Giá bán",
-            "volume": "KL",
-            "profit_loss_value": "Lời/Lỗ (₫)",
-            "profit_loss_pct": "Lời/Lỗ (%)",
-            "sold_at": "Ngày bán",
-        })
-        df = df.drop(columns=["id"], errors="ignore")
+        for record in history:
+            pnl = record["profit_loss_value"]
+            pnl_pct = record["profit_loss_pct"]
+            emoji = "🟢" if pnl >= 0 else "🔴"
 
-        # Format columns
-        df["Giá mua"] = df["Giá mua"].apply(lambda x: f"{x:,.0f}")
-        df["Giá bán"] = df["Giá bán"].apply(lambda x: f"{x:,.0f}")
-        df["Lời/Lỗ (₫)"] = df["Lời/Lỗ (₫)"].apply(lambda x: f"{x:+,.0f}")
-        df["Lời/Lỗ (%)"] = df["Lời/Lỗ (%)"].apply(lambda x: f"{x:+.2f}%")
-        df["Ngày bán"] = pd.to_datetime(df["Ngày bán"]).dt.strftime("%Y-%m-%d %H:%M")
+            with st.container(border=True):
+                col1, col2, col3, col4 = st.columns([2, 3, 3, 1])
 
-        st.dataframe(df, use_container_width=True, hide_index=True)
+                with col1:
+                    st.markdown(f"**{emoji} {record['symbol']}**")
+                    sold_date = pd.to_datetime(record["sold_at"]).strftime("%Y-%m-%d %H:%M")
+                    st.caption(sold_date)
+
+                with col2:
+                    st.markdown(f"Mua: **{record['buy_price']:,.0f}** → Bán: **{record['sell_price']:,.0f}** | KL: {record['volume']:,}")
+
+                with col3:
+                    st.markdown(f"Lời/Lỗ: **{pnl:+,.0f} ₫** ({pnl_pct:+.2f}%)")
+
+                with col4:
+                    if st.button("🗑️", key=f"del_history_{record['id']}", help="Xóa record này"):
+                        api_delete(f"/api/history/{record['id']}")
+                        st.rerun()
     else:
         st.info("Chưa có lịch sử giao dịch nào trong khoảng thời gian này.")

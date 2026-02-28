@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta, timezone
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
 from app.database import get_db
@@ -63,3 +63,14 @@ def get_analytics(
         losing_trades=len(losing),
         win_rate=round(win_rate, 2),
     )
+
+
+@router.delete("/history/{history_id}", status_code=204)
+def delete_history(history_id: int, db: Session = Depends(get_db)):
+    """Xóa 1 record lịch sử giao dịch."""
+    record = db.query(History).filter(History.id == history_id).first()
+    if not record:
+        raise HTTPException(status_code=404, detail="History record not found")
+    db.delete(record)
+    db.commit()
+

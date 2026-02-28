@@ -9,3 +9,25 @@
 2026-02-28 23:15:47,324 [INFO] apscheduler.executors.default: Job "check_prices_and_alert (trigger: interval[0:05:00], next run at: 2026-02-28 23:20:47 +07)" executed successfully
 2026-02-28 23:20:47,321 [INFO] apscheduler.executors.default: Running job "check_prices_and_alert (trigger: interval[0:05:00], next run at: 2026-02-28 23:25:47 +07)" (scheduled at 2026-02-28 23:20:47.317109+07:00)
 2026-02-28 23:20:47,322 [INFO] apscheduler.executors.default: Job "check_prices_and_alert (trigger: interval[0:05:00], next run at: 2026-02-28 23:25:47 +07)" executed successfully
+2026-02-28 23:25:47,325 [INFO] apscheduler.executors.default: Running job "check_prices_and_alert (trigger: interval[0:05:00], next run at: 2026-02-28 23:30:47 +07)" (scheduled at 2026-02-28 23:25:47.317109+07:00)
+2026-02-28 23:25:47,325 [INFO] apscheduler.executors.default: Job "check_prices_and_alert (trigger: interval[0:05:00], next run at: 2026-02-28 23:30:47 +07)" executed successfully
+2026-02-28 23:30:47,317 [INFO] apscheduler.executors.default: Running job "check_prices_and_alert (trigger: interval[0:05:00], next run at: 2026-02-28 23:35:47 +07)" (scheduled at 2026-02-28 23:30:47.317109+07:00)
+2026-02-28 23:30:47,317 [INFO] apscheduler.executors.default: Job "check_prices_and_alert (trigger: interval[0:05:00], next run at: 2026-02-28 23:35:47 +07)" executed successfully
+2026-02-28 23:34:35,273 [INFO] apscheduler.scheduler: Scheduler has been shut down
+2026-02-28 23:34:35,273 [INFO] app.main: Nobi Trade API stopped
+2026-02-28 23:34:39,461 [INFO] app.main: Starting Nobi Trade API...
+2026-02-28 23:34:39,463 [INFO] app.main: Database initialized
+2026-02-28 23:34:39,469 [INFO] apscheduler.scheduler: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-28 23:34:39,469 [INFO] apscheduler.scheduler: Added job "check_prices_and_alert" to job store "default"
+2026-02-28 23:34:39,469 [INFO] apscheduler.scheduler: Scheduler started
+2026-02-28 23:34:39,469 [INFO] app.scheduler: Scheduler started — price check every 5 minutes
+2026-02-28 23:35:05,566 [INFO] apscheduler.scheduler: Scheduler has been shut down
+2026-02-28 23:35:05,567 [INFO] app.main: Nobi Trade API stopped
+2026-02-28 23:35:08,739 [INFO] app.main: Starting Nobi Trade API...
+2026-02-28 23:35:08,739 [INFO] app.main: Database initialized
+2026-02-28 23:35:08,746 [INFO] apscheduler.scheduler: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-28 23:35:08,746 [INFO] apscheduler.scheduler: Added job "check_prices_and_alert" to job store "default"
+2026-02-28 23:35:08,746 [INFO] apscheduler.scheduler: Scheduler started
+2026-02-28 23:35:08,750 [INFO] app.scheduler: Scheduler started — price check every 5 minutes
+2026-02-28 23:35:24,637 [INFO] apscheduler.scheduler: Scheduler has been shut down
+2026-02-28 23:35:24,642 [INFO] app.main: Nobi Trade API stopped
