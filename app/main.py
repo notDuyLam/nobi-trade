@@ -4,13 +4,16 @@ from fastapi import FastAPI
 
 from app.database import init_db
 from app.routers import history, positions
+from app.scheduler import start_scheduler
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Startup & shutdown events."""
     init_db()
+    scheduler = start_scheduler()
     yield
+    scheduler.shutdown()
 
 
 app = FastAPI(

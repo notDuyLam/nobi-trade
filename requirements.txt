@@ -7,3 +7,5 @@ requests==2.32.*
 streamlit==1.42.*
 python-dotenv==1.0.*
 httpx==0.28.*
+pytz
+
