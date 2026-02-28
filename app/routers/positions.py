@@ -6,7 +6,7 @@ from app.models import Position
 from app.schemas import HistoryResponse, PositionCreate, PositionResponse, SellRequest
 from app.services.trade_service import sell_position
 
-router = APIRouter(prefix="/api/positions", tags=["Positions"])
+router = APIRouter(prefix="/api/positions", tags=["Positions"], redirect_slashes=False)
 
 
 @router.post("/", response_model=PositionResponse, status_code=201)

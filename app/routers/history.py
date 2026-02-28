@@ -7,7 +7,7 @@ from app.database import get_db
 from app.models import History
 from app.schemas import AnalyticsResponse, HistoryResponse
 
-router = APIRouter(prefix="/api", tags=["History & Analytics"])
+router = APIRouter(prefix="/api", tags=["History & Analytics"], redirect_slashes=False)
 
 PERIOD_MAP = {
     "1m": timedelta(days=30),

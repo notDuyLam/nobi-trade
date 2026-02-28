@@ -23,7 +23,7 @@ API_URL = os.getenv("API_BASE_URL", "http://localhost:8000")
 
 def api_get(path: str, params: dict | None = None):
     try:
-        r = httpx.get(f"{API_URL}{path}", params=params, timeout=10)
+        r = httpx.get(f"{API_URL}{path}", params=params, timeout=10, follow_redirects=True)
         r.raise_for_status()
         return r.json()
     except Exception as e:
@@ -33,7 +33,7 @@ def api_get(path: str, params: dict | None = None):
 
 def api_post(path: str, json: dict | None = None):
     try:
-        r = httpx.post(f"{API_URL}{path}", json=json, timeout=10)
+        r = httpx.post(f"{API_URL}{path}", json=json, timeout=10, follow_redirects=True)
         r.raise_for_status()
         return r.json()
     except Exception as e:
@@ -43,7 +43,7 @@ def api_post(path: str, json: dict | None = None):
 
 def api_patch(path: str):
     try:
-        r = httpx.patch(f"{API_URL}{path}", timeout=10)
+        r = httpx.patch(f"{API_URL}{path}", timeout=10, follow_redirects=True)
         r.raise_for_status()
         return r.json()
     except Exception as e:
@@ -53,7 +53,7 @@ def api_patch(path: str):
 
 def api_delete(path: str):
     try:
-        r = httpx.delete(f"{API_URL}{path}", timeout=10)
+        r = httpx.delete(f"{API_URL}{path}", timeout=10, follow_redirects=True)
         if r.status_code == 204:
             return True
         r.raise_for_status()
