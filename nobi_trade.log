@@ -5,3 +5,7 @@
 2026-02-28 23:10:47,317 [INFO] apscheduler.scheduler: Scheduler started
 2026-02-28 23:10:47,317 [INFO] app.scheduler: Scheduler started — price check every 5 minutes
 2026-02-28 23:11:49,110 [INFO] app.services.alert_service: Telegram message sent successfully
+2026-02-28 23:15:47,324 [INFO] apscheduler.executors.default: Running job "check_prices_and_alert (trigger: interval[0:05:00], next run at: 2026-02-28 23:20:47 +07)" (scheduled at 2026-02-28 23:15:47.317109+07:00)
+2026-02-28 23:15:47,324 [INFO] apscheduler.executors.default: Job "check_prices_and_alert (trigger: interval[0:05:00], next run at: 2026-02-28 23:20:47 +07)" executed successfully
+2026-02-28 23:20:47,321 [INFO] apscheduler.executors.default: Running job "check_prices_and_alert (trigger: interval[0:05:00], next run at: 2026-02-28 23:25:47 +07)" (scheduled at 2026-02-28 23:20:47.317109+07:00)
+2026-02-28 23:20:47,322 [INFO] apscheduler.executors.default: Job "check_prices_and_alert (trigger: interval[0:05:00], next run at: 2026-02-28 23:25:47 +07)" executed successfully
